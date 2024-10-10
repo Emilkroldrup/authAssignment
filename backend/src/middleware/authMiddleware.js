@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken');
+const { verifyJWT } = require('../utils/jwtUtils');
 
 // Middleware to verify JWT
 const authMiddleware = (req, res, next) => {
@@ -8,11 +8,11 @@ const authMiddleware = (req, res, next) => {
     }
 
     try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        const decoded = verifyJWT(token);
         req.user = decoded;
         next();
     } catch (err) {
-        res.status(400).json({ message: 'Invalid token' });
+        res.status(400).json({ message: err.message });
     }
 };
 
