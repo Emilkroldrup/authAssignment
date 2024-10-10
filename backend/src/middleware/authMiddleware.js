@@ -24,7 +24,6 @@ const roleMiddleware = (requiredRole) => (req, res, next) => {
     next();
 };
 
-// Export both middlewares
 module.exports = {
     authMiddleware,
     roleMiddleware,
