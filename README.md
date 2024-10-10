@@ -64,6 +64,48 @@ Jeg har sat en **Next.js** frontend op i **TypeScript**, der bruger backend-API'
 - **Sessionshåndtering**: Tilføjelse af en refresh token-mekanisme for at forlænge brugerens session sikkert er også på min liste.
 - **UI/UX-forbedringer**: Jeg vil gøre frontenden virkelig lækker, med bedre styling og brugervenlige fejlmeddelelser.
 
+## Sådan installerer og starter du projektet
+
+### Forudsætninger
+
+- **Node.js** (version 14+)
+- **npm** eller **yarn**
+- **MongoDB** instans (lokal eller cloud)
+
+### Installationsvejledning
+
+1. **Klon repository**:
+
+   ```bash
+   git clone https://github.com/your-username/authAssignment.git
+   cd authAssignment
+   ```
+
+2. **Backend-opsætning**:
+
+   ```bash
+   cd backend
+   npm install
+   Opret en .env fil i root backend folder med
+   MONGO_URI=din_mongo_forbindelsesstreng
+   JWT_SECRET=din_jwt_hemmelighed
+   Start med: npm start
+   ```
+
+3. **Frontend-opsætning**:
+
+   ```bash
+   cd ../frontend
+   npm install
+   npm run dev
+   ```
+
+   Du kan tilgå Swagger dokumentation ved at gå til
+
+   ```bash
+   http://localhost:5000/api-docs
+   ```
+
 ## Konklusion
 
 Dette projekt har handlet om at bygge en komplet backend-opsætning til **sikker brugerhåndtering** med **rollebaseret adgangskontrol** og **JWT-authentication**. At gå fra at bruge et bibliotek til JWT til at bygge min egen implementering var en udfordrende men lærerig oplevelse. Ved at udtrække JWT-operationer, bruge middleware til adgangskontrol og strukturere applikationen i logiske moduler, har jeg skabt noget, der ikke kun er funktionelt, men også vedligeholdelsesvenligt og skalerbart.

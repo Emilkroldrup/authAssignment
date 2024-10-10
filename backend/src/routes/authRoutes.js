@@ -20,15 +20,16 @@ const router = express.Router();
  *               username:
  *                 type: string
  *                 description: The username of the user
- *                 example: johndoe
+ *                 example: mikkel
  *               password:
  *                 type: string
  *                 description: The password of the user, must be at least 6 characters long and contain at least one letter and one number
- *                 example: Pa$$w0rd
+ *                 example: password123
  *               role:
  *                 type: string
  *                 enum: [soldier, officer, admin]
  *                 description: The role of the user
+ *                 example: soldier
  *     responses:
  *       201:
  *         description: User registered successfully.
@@ -53,11 +54,11 @@ router.post('/register', registerUser);
  *               username:
  *                 type: string
  *                 description: The username of the user
- *                 example: johndoe
+ *                 example: Mikkel
  *               password:
  *                 type: string
  *                 description: The password of the user
- *                 example: Pa$$w0rd
+ *                 example: password123
  *     responses:
  *       200:
  *         description: User logged in successfully, returns a JWT token.
@@ -68,7 +69,8 @@ router.post('/register', registerUser);
  *               properties:
  *                 token:
  *                   type: string
- *                   description: The JWT token for authentication
+ *                   description: The JWT token for authentication.
+ *                   example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
  *       400:
  *         description: Bad request.
  *       401:
@@ -84,11 +86,21 @@ router.post('/login', loginUser);
  *     tags: [Auth]
  *     security:
  *       - bearerAuth: []
+ *     parameters:
+ *       - in: header
+ *         name: Authorization
+ *         required: true
+ *         schema:
+ *           type: string
+ *           description: Bearer token for authorization
+ *           example: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
  *     responses:
  *       200:
  *         description: Admin access granted.
+ *       401:
+ *         description: Unauthorized. No token provided or token is invalid.
  *       403:
- *         description: Forbidden.
+ *         description: Forbidden. User does not have admin rights.
  */
 router.get('/admin', authMiddleware, roleMiddleware('admin'), getAdminAccess);
 
