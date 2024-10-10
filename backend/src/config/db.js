@@ -3,12 +3,12 @@ const mongoose = require('mongoose');
 const connectDB = async () => {
     try {
         await mongoose.connect(process.env.MONGO_URI, {
-            serverSelectionTimeoutMS: 50000, // Increase timeout to handle network delays
+            serverSelectionTimeoutMS: 50000,
         });
         console.log('MongoDB Connected...');
     } catch (err) {
         console.error('MongoDB connection error:', err.message);
-        process.exit(1); // Exit process with failure
+        process.exit(1);
     }
 
     mongoose.connection.on('connected', () => {
@@ -23,7 +23,7 @@ const connectDB = async () => {
         console.log('Mongoose disconnected');
     });
 
-    // Enable debugging
+    // Debug mode
     mongoose.set('debug', true);
 };
 

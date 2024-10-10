@@ -24,31 +24,44 @@ const RegisterPage = () => {
     };
 
     return (
-        <div>
-            <h1>Register</h1>
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    placeholder="Username"
-                    required
-                />
-                <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Password"
-                    required
-                />
-                <select value={role} onChange={(e) => setRole(e.target.value)}>
-                    <option value="soldier">Soldier</option>
-                    <option value="officer">Officer</option>
-                    <option value="admin">Admin</option>
-                </select>
-                <button type="submit">Register</button>
-            </form>
-            {message && <p>{message}</p>}
+        <div className="min-h-screen flex items-center justify-center bg-green-900 text-gray-100 p-6">
+            <div className="bg-green-800 p-8 rounded-lg shadow-md max-w-sm w-full">
+                <h1 className="text-3xl font-bold mb-4 text-yellow-600">Register</h1>
+                <form onSubmit={handleSubmit}>
+                    <input
+                        type="text"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        placeholder="Username"
+                        className="w-full p-2 mb-4 rounded bg-yellow-100 text-gray-900"
+                        required
+                    />
+                    <input
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="Password"
+                        className="w-full p-2 mb-4 rounded bg-yellow-100 text-gray-900"
+                        required
+                    />
+                    <select
+                        value={role}
+                        onChange={(e) => setRole(e.target.value)}
+                        className="w-full p-2 mb-4 rounded bg-yellow-100 text-gray-900"
+                    >
+                        <option value="soldier">Soldier</option>
+                        <option value="officer">Officer</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                    <button
+                        type="submit"
+                        className="w-full px-4 py-2 mt-4 font-semibold text-white bg-yellow-700 hover:bg-yellow-800 rounded-lg"
+                    >
+                        Register
+                    </button>
+                </form>
+                {message && <p className="mt-4 text-yellow-500">{message}</p>}
+            </div>
         </div>
     );
 };
