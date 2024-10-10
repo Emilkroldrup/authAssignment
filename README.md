@@ -216,6 +216,8 @@ I have set up a **Next.js** frontend in **TypeScript** that consumes the backend
     npm run dev
    ```
 
+    You can access swagger docs by going to this url:
+
    ```bash
    http://localhost:5000/api-docs
    ```
