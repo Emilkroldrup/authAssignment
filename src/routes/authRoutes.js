@@ -1,6 +1,6 @@
 const express = require('express');
 const { registerUser, loginUser, getAdminAccess } = require('../controllers/authController');
-const { authMiddleware, roleMiddleware } = require('../middleware/authMiddleware'); // Correctly import roleMiddleware
+const { authMiddleware, roleMiddleware } = require('../middleware/authMiddleware');
 
 const router = express.Router();
 
